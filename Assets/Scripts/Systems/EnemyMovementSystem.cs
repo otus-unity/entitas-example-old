@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 
@@ -13,6 +14,7 @@ public class EnemyMovementSystem : IExecuteSystem, ICleanupSystem
         public float angle;
     }
 
+    [BurstCompile]
     struct UpdateJob : IJobParallelFor
     {
         public float deltaTime;
