@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Entitas;
 using UnityEngine;
 
+/*
 public class TransformApplySystem : ReactiveSystem<GameEntity>
 {
     Contexts contexts;
@@ -42,3 +42,4 @@ public class TransformApplySystem : ReactiveSystem<GameEntity>
         }
     }
 }
+*/

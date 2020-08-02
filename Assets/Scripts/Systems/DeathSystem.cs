@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Entitas;
 
+/*
 public class DeathSystem : IExecuteSystem, ICleanupSystem
 {
     IGroup<GameEntity> entities;
@@ -30,3 +30,4 @@ public class DeathSystem : IExecuteSystem, ICleanupSystem
         deadEntities.Clear();
     }
 }
+*/

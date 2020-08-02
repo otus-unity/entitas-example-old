@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Entitas;
 using UnityEngine;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 
+/*
 public class EnemyMovementSystem : IExecuteSystem, ICleanupSystem
 {
     struct EnemyData
@@ -93,3 +93,4 @@ public class EnemyMovementSystem : IExecuteSystem, ICleanupSystem
         clones.Clear();
     }
 }
+*/

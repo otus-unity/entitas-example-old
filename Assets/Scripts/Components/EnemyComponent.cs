@@ -1,6 +1,6 @@
-﻿using Entitas;
+﻿using Unity.Entities;
 
-public class EnemyComponent : IComponent
+public struct EnemyComponent : IComponentData
 {
     public float timeUntilNextTurn;
 }

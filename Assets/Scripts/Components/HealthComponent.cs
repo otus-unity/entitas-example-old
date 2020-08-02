@@ -1,6 +1,6 @@
-﻿using Entitas;
+﻿using Unity.Entities;
 
-public class HealthComponent : IComponent
+public struct HealthComponent : IComponentData
 {
     public float value;
 }

@@ -1,7 +1,7 @@
-﻿using Entitas;
+﻿using Unity.Entities;
 using UnityEngine;
 
-public class ViewComponent : IComponent
+public struct ViewComponent : IComponentData
 {
-    public GameObject gameObject;
+    //public GameObject gameObject;
 }

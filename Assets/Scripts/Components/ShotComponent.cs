@@ -1,5 +1,5 @@
-﻿using Entitas;
+﻿using Unity.Entities;
 
-public class ShotComponent : IComponent
+public struct ShotComponent : IComponentData
 {
 }

@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Entitas;
 using UnityEngine;
 
+/*
 public class EnemyInstantiateSystem : ReactiveSystem<GameEntity>
 {
     Contexts contexts;
@@ -31,3 +31,4 @@ public class EnemyInstantiateSystem : ReactiveSystem<GameEntity>
         }
     }
 }
+*/

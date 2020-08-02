@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Entitas;
 using UnityEngine;
 using TMPro;
 
@@ -10,10 +9,11 @@ public class GameController : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject shotPrefab;
     public TextMeshProUGUI enemyCountText;
-    Systems systems;
+    //Systems systems;
 
     void Awake()
     {
+        /*
         var contexts = Contexts.sharedInstance;
 
         contexts.game.SetGlobals(playerPrefab, enemyPrefab, shotPrefab, enemyCountText);
@@ -30,16 +30,17 @@ public class GameController : MonoBehaviour
         systems.Add(new ViewDestroySystem(contexts));
         systems.Add(new TransformApplySystem(contexts));
         systems.Initialize();
+        */
     }
 
     void OnDestroy()
     {
-        systems.TearDown();
+        //systems.TearDown();
     }
 
     void Update()
     {
-        systems.Execute();
-        systems.Cleanup();
+        //systems.Execute();
+        //systems.Cleanup();
     }
 }

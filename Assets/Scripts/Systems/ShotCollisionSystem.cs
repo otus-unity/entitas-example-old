@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Entitas;
 using UnityEngine;
 
+/*
 public class ShotCollisionSystem : IExecuteSystem, ICleanupSystem
 {
     IGroup<GameEntity> shotEntities;
@@ -44,3 +44,4 @@ public class ShotCollisionSystem : IExecuteSystem, ICleanupSystem
         deadEntities.Clear();
     }
 }
+*/

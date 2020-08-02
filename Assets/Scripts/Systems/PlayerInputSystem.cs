@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Entitas;
 using UnityEngine;
 
+/*
 public class PlayerInputSystem : IExecuteSystem
 {
     Contexts contexts;
@@ -56,3 +56,4 @@ public class PlayerInputSystem : IExecuteSystem
         }
     }
 }
+*/

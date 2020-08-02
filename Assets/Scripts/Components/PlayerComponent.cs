@@ -1,4 +1,5 @@
-﻿using Entitas;
-public class PlayerComponent : IComponent
+﻿using Unity.Entities;
+
+public struct PlayerComponent : IComponentData
 {
 }
