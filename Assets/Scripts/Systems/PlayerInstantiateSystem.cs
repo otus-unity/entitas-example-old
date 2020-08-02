@@ -1,34 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Entities;
 
-/*
-public class PlayerInstantiateSystem : ReactiveSystem<GameEntity>
+public class PlayerInstantiateSystem : ComponentSystem
 {
-    Contexts contexts;
-
-    public PlayerInstantiateSystem(Contexts contexts)
-        : base(contexts.game)
+    protected override void OnUpdate()
     {
-        this.contexts = contexts;
-    }
+        Entity playerPrefab = new Entity();
+        Entities.ForEach((GlobalsComponent globals) => {
+                playerPrefab = globals.playerPrefab;
+            });
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
-    {
-        return context.CreateCollector(GameMatcher.Player);
-    }
-
-    protected override bool Filter(GameEntity entity)
-    {
-        return entity.isPlayer && !entity.hasView;
-    }
-
-    protected override void Execute(List<GameEntity> entities)
-    {
-        foreach (var e in entities) {
-            var obj = GameObject.Instantiate(contexts.game.globals.playerPrefab);
-            e.AddView(obj);
-        }
+        Entities.WithNone<ViewComponent>().ForEach((Entity entity, ref PlayerComponent playerComponent) => {
+                var instantiatedPrefab = EntityManager.Instantiate(playerPrefab);
+                EntityManager.AddComponent<ViewComponent>(entity);
+                EntityManager.SetComponentData<ViewComponent>(entity, new ViewComponent{ entity = instantiatedPrefab });
+            });
     }
 }
-*/

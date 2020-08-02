@@ -3,5 +3,5 @@ using UnityEngine;
 
 public struct ViewComponent : IComponentData
 {
-    //public GameObject gameObject;
+    public Entity entity;
 }

@@ -1,33 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Entities;
+using Unity.Jobs;
 
-/*
-public class DeathSystem : IExecuteSystem, ICleanupSystem
+public class DeathSystem : JobComponentSystem
 {
-    IGroup<GameEntity> entities;
-    List<Entity> deadEntities = new List<Entity>();
+    EndSimulationEntityCommandBufferSystem commandBufferSystem;
 
-    public DeathSystem(Contexts contexts)
+    protected override void OnCreate()
     {
-        entities = contexts.game.GetGroup(GameMatcher.Health);
+        base.OnCreate();
+        commandBufferSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
-    public void Execute()
+    protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        deadEntities.Clear();
-        foreach (var e in entities) {
-            if (e.health.value <= 0)
-                deadEntities.Add(e);
-        }
+        var commandBuffer = commandBufferSystem.CreateCommandBuffer().ToConcurrent();
+        var job = Entities.ForEach((Entity entity, int entityInQueryIndex, ref HealthComponent health) => {
+                if (health.value <= 0)
+                    commandBuffer.DestroyEntity(entityInQueryIndex, entity);
+            }).Schedule(inputDeps);
 
-        foreach (var e in deadEntities)
-            e.Destroy();
-    }
-
-    public void Cleanup()
-    {
-        deadEntities.Clear();
+        commandBufferSystem.AddJobHandleForProducer(job);
+        return job;
     }
 }
-*/

@@ -7,9 +7,9 @@ using TMPro;
 
 public struct GlobalsComponent : ISharedComponentData, IEquatable<GlobalsComponent>
 {
-    public GameObject playerPrefab;
-    public GameObject enemyPrefab;
-    public GameObject shotPrefab;
+    public Entity playerPrefab;
+    public Entity enemyPrefab;
+    public Entity shotPrefab;
     public TextMeshProUGUI enemyCountText;
 
     public bool Equals(GlobalsComponent other)
