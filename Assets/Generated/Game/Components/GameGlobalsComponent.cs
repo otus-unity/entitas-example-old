@@ -12,22 +12,22 @@ public partial class GameContext {
     public GlobalsComponent globals { get { return globalsEntity.globals; } }
     public bool hasGlobals { get { return globalsEntity != null; } }
 
-    public GameEntity SetGlobals(UnityEngine.GameObject newPlayerPrefab, UnityEngine.GameObject newEnemyPrefab, UnityEngine.GameObject newShotPrefab) {
+    public GameEntity SetGlobals(UnityEngine.GameObject newPlayerPrefab, UnityEngine.GameObject newEnemyPrefab, UnityEngine.GameObject newShotPrefab, TMPro.TextMeshProUGUI newEnemyCountText) {
         if (hasGlobals) {
             throw new Entitas.EntitasException("Could not set Globals!\n" + this + " already has an entity with GlobalsComponent!",
                 "You should check if the context already has a globalsEntity before setting it or use context.ReplaceGlobals().");
         }
         var entity = CreateEntity();
-        entity.AddGlobals(newPlayerPrefab, newEnemyPrefab, newShotPrefab);
+        entity.AddGlobals(newPlayerPrefab, newEnemyPrefab, newShotPrefab, newEnemyCountText);
         return entity;
     }
 
-    public void ReplaceGlobals(UnityEngine.GameObject newPlayerPrefab, UnityEngine.GameObject newEnemyPrefab, UnityEngine.GameObject newShotPrefab) {
+    public void ReplaceGlobals(UnityEngine.GameObject newPlayerPrefab, UnityEngine.GameObject newEnemyPrefab, UnityEngine.GameObject newShotPrefab, TMPro.TextMeshProUGUI newEnemyCountText) {
         var entity = globalsEntity;
         if (entity == null) {
-            entity = SetGlobals(newPlayerPrefab, newEnemyPrefab, newShotPrefab);
+            entity = SetGlobals(newPlayerPrefab, newEnemyPrefab, newShotPrefab, newEnemyCountText);
         } else {
-            entity.ReplaceGlobals(newPlayerPrefab, newEnemyPrefab, newShotPrefab);
+            entity.ReplaceGlobals(newPlayerPrefab, newEnemyPrefab, newShotPrefab, newEnemyCountText);
         }
     }
 
@@ -49,21 +49,23 @@ public partial class GameEntity {
     public GlobalsComponent globals { get { return (GlobalsComponent)GetComponent(GameComponentsLookup.Globals); } }
     public bool hasGlobals { get { return HasComponent(GameComponentsLookup.Globals); } }
 
-    public void AddGlobals(UnityEngine.GameObject newPlayerPrefab, UnityEngine.GameObject newEnemyPrefab, UnityEngine.GameObject newShotPrefab) {
+    public void AddGlobals(UnityEngine.GameObject newPlayerPrefab, UnityEngine.GameObject newEnemyPrefab, UnityEngine.GameObject newShotPrefab, TMPro.TextMeshProUGUI newEnemyCountText) {
         var index = GameComponentsLookup.Globals;
         var component = (GlobalsComponent)CreateComponent(index, typeof(GlobalsComponent));
         component.playerPrefab = newPlayerPrefab;
         component.enemyPrefab = newEnemyPrefab;
         component.shotPrefab = newShotPrefab;
+        component.enemyCountText = newEnemyCountText;
         AddComponent(index, component);
     }
 
-    public void ReplaceGlobals(UnityEngine.GameObject newPlayerPrefab, UnityEngine.GameObject newEnemyPrefab, UnityEngine.GameObject newShotPrefab) {
+    public void ReplaceGlobals(UnityEngine.GameObject newPlayerPrefab, UnityEngine.GameObject newEnemyPrefab, UnityEngine.GameObject newShotPrefab, TMPro.TextMeshProUGUI newEnemyCountText) {
         var index = GameComponentsLookup.Globals;
         var component = (GlobalsComponent)CreateComponent(index, typeof(GlobalsComponent));
         component.playerPrefab = newPlayerPrefab;
         component.enemyPrefab = newEnemyPrefab;
         component.shotPrefab = newShotPrefab;
+        component.enemyCountText = newEnemyCountText;
         ReplaceComponent(index, component);
     }
 

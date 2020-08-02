@@ -20,7 +20,7 @@ public class EnemyInstantiateSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.isEnemy && !entity.hasView;
+        return entity.hasEnemy && !entity.hasView;
     }
 
     protected override void Execute(List<GameEntity> entities)

@@ -9,7 +9,7 @@ public class EnemyEntity : AbstractEntity
     protected override void Start()
     {
         base.Start();
-        entity.isEnemy = true;
+        entity.AddEnemy(0.0f);
         entity.AddHealth(health);
     }
 }
